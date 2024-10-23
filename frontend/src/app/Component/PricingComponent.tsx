@@ -26,11 +26,11 @@ const PricingComponent: React.FC<PricingComponentProps> = ({ isDarkMode }) => {
   // Function to calculate the price based on selected pageviews and billing type
   const getPrice = (pageviews: number, isYearlyBilling: boolean) => {
     const tier = pricingTiers.find(t => t.views === pageviews);
-    let monthlyPrice = tier ? tier.price : 0; // Default to 0 if no matching tier
-
-    
+    const monthlyPrice = tier ? tier.price : 0; // Use const here instead of let
+  
     return isYearlyBilling ? (monthlyPrice * 0.75).toFixed(2) : monthlyPrice.toFixed(2);
   };
+  
 
   const price = getPrice(pageviews, isYearlyBilling);
 
